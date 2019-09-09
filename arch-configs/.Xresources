@@ -1,0 +1,6 @@
+!! Include Colorscheme
+#include "/home/saeed/.local/share/themes/colorschemes/grayscale"
+
+!! Programs Configs
+#include "/home/saeed/.config/urxvt/urxvtrc"
+#include "/home/saeed/.config/xterm/xtermrc"

@@ -1,0 +1,268 @@
+
+## -----------------------
+#   SOME HINTS 
+## -----------------------
+# Key reference
+# Mod1: Alt      Mod4: Win
+# Control: ctl   Shift: shift 
+
+
+# -------------------------------------
+#          GLOBAL CONFIGS
+#   These configs may overwrriten
+# ------------------------------------
+set $mod Mod4
+
+# Window Tilte Font
+font pango:Open Sans 10
+
+# Lock the screen before suspend
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock-fancy --nofork
+
+# System tray
+exec --no-startup-id nm-applet
+
+# default border
+default_border pixel 3
+
+# defualt gaps
+gaps inner 10
+gaps outer 10
+
+# --------------------------------------------------
+#               BASIC KEY BINDINGS
+# --------------------------------------------------
+
+# start a terminal
+bindsym $mod+Return exec i3-sensible-terminal
+
+# kill focused window
+bindsym $mod+Shift+q kill
+
+# dmenu
+bindsym $mod+p exec dmenu_run
+
+# Change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+# or
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# Window Move
+bindsym $mod+Shift+h move left 30px
+bindsym $mod+Shift+j move down 30px
+bindsym $mod+Shift+k move up 30px
+bindsym $mod+Shift+l move right 30px
+# or
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
+# Screen split
+bindsym $mod+i split h 
+bindsym $mod+v split v
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Layout
+bindsym $mod+s layout stacking
+bindsym $mod+t layout tabbed
+bindsym $mod+e layout toggle split
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# focus the child container
+bindsym $mod+Shift+d focus child
+
+# Reset / Reload i3
+bindsym $mod+Shift+r restart
+bindsym $mod+Shift+c reload
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'Exit i3?' -B 'Yes' 'i3-msg exit'"
+bindsym $mod+shift+x exec i3lock-fancy 
+
+# Screenshot taking
+bindsym Print exec --no-startup-id scrot -e 'mv $f ~/media/pictures/screenshots/';exec notify-send "Screenshot took."
+
+# Move to next and previous workspace
+bindsym $mod+Tab  workspace next
+bindsym $mod+Shift+Tab  workspace prev
+
+# Cut a window
+bindsym $mod+Shift+minus move scratchpad
+# Past a window
+bindsym $mod+minus scratchpad show
+
+# Change window gap size
+bindsym $mod+bracketright  gaps outer current plus 5
+bindsym $mod+bracketleft gaps outer current minus 5
+
+# Bar hide / show
+bindsym $mod+b bar mode toggle
+bindsym $mod+Shift+b        floating toggle; sticky toggle; exec --no-startup-id hover left
+bindsym $mod+Shift+n        floating toggle; sticky toggle; exec --no-startup-id hover right
+
+# Multimedia key binds
+bindsym XF86AudioRaiseVolume exec --no-startup-id "amixer -Mq set Master,0 5%+ unmute"
+bindsym XF86AudioLowerVolume exec --no-startup-id "amixer -Mq set Master,0 5%- unmute"
+bindsym XF86AudioMute exec --no-startup-id "pamixer -t"
+
+# Application sepcific key binds
+bindsym Mod1+Control+b exec --no-startup-id "surf"
+bindsym Mod1+Control+f exec --no-startup-id "firefox"
+bindsym Mod1+Control+o exec --no-startup-id "code"
+bindsym Mod1+Control+e exec --no-startup-id "subl"
+bindsym Mod1+Control+m exec --no-startup-id "urxvt -e cmus"
+bindsym Mod1+Control+s exec --no-startup-id "skypeforlinux"
+
+
+
+# -------------------------
+#   Workspaces
+# -------------------------
+# Workspace variables
+set $ws1 "1: "
+set $ws2 "2: "
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
+set $ws6 "6: "
+set $ws7 "7: "
+set $ws8 "8: "
+set $ws9 "9: "
+set $ws10 "10: "
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws10
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Assian programs to workspace
+assign [class="Surf"] $ws2
+assign [class="firefox"] $ws2
+assign [class="code-oss"] $ws3
+assign [class="Subl"] $ws3
+assign [class="cmus"] $ws10
+assign [class="Skype"] $ws10
+
+# Move to last and current workspace
+workspace_auto_back_and_forth yes 
+
+
+# ---------------------------
+#   Window Configurations
+# ---------------------------
+# Floatning window 
+floating_modifier $mod
+bindsym $mod+space floating toggle
+bindsym $mod+Shift+space focus mode_toggle
+
+# Window max and min size
+floating_minimum_size 75 x 50
+floating_maximum_size -1 x -1
+
+# Resizing window
+bindsym $mod+Control+h resize grow width 10 px or 10 ppt
+bindsym $mod+Control+j resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+k resize grow height 10 px or 10 ppt
+bindsym $mod+Control+l resize shrink width 10 px or 10 ppt
+# or
+bindsym $mod+Control+Left resize shrink width 10 px or 10 ppt
+bindsym $mod+Control+Down resize grow height 10 px or 10 ppt
+bindsym $mod+Control+Up resize shrink height 10 px or 10 ppt
+bindsym $mod+Control+Right resize grow width 10 px or 10 ppt
+
+
+# Remove gaps (Maximize)
+bindsym $mod+g gaps inner all set 0;gaps outer all set 0 
+# Add some gaps around window
+bindsym $mod+Shift+g gaps inner all set 10;gaps outer all set 10
+
+# Removing / Re-adding window border
+bindsym $mod+o border none
+bindsym $mod+Shift+o border pixel 3 
+
+# hide window border when window is alone
+hide_edge_borders smart 
+
+# Remove gaps from workspace 3(coding)
+workspace $ws3 gaps inner 0
+workspace $ws3 gaps outer 0
+
+# ---------------------------
+#   Color Scheme
+#---------------------------
+# Color scheme reference variables
+# 1: balck , 2: light, n+1: lighter
+set $cyan1    #00838F
+set $cyan2    #2aa198
+set $black1   #101010
+set $black2   #151515
+set $balck3   #404040
+set $gray1    #505050
+set $gray2    #979696
+set $gray3    #8e8e8e
+set $gray5    #b9b9b9
+set $white1   #f7f7f7
+
+# border
+# background 
+# text 
+# indicator 
+# child_border
+
+client.focused              $black1  $black1   $white1  $cyan2  $cyan2
+client.unfocused            $black1  $black1   $gray2   $cyan2  $gray1
+client.focused_inactive     $black1  $black1   $gray2   $cyan2  $gray3
+client.urgent               $black1  $black1   $gray2   $cyan2  $gray2
+client.background           $black1
+
+
+# ----------------------
+#   i3bar Configs
+# ----------------------
+# Bar
+bar {      
+    # strip_workspace_numbers yes
+    position top
+    status_command i3blocks -c  ~/.config/i3/i3blocks.conf
+    font pango: Open Sans, Font Awesome 5 Free 11
+    
+    colors {
+    separator  $black1
+    background $black1
+    statusline $gray5
+    #                  border   background  text
+    focused_workspace  $black1  $cyan1      $white1
+    inactive_workspace $black1  $black1     $gray5
+    active_workspace   $white1  $white1     $gray5
+    urgent_workspace   $white1   $cyan2      $white1
+    }
+    
+}
