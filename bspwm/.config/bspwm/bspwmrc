@@ -3,12 +3,14 @@
 sxhkd &
 compton &
 rofi &
+feh --bg-scale --randomize  ~/pics/walls/*
+
 ~/.config/polybar/launch.sh
-~/.fehbg
+
 
 bspc monitor -d 1 2 3 8 9 10
 
-bspc config border_width         2
+bspc config border_width        3 
 bspc config window_gap          12
 
 bspc config split_ratio          0.52
@@ -17,7 +19,8 @@ bspc config gapless_monocle      true
 
 bspc rule -a Chromium desktop='^2'
 bspc rule -a code desktop='^3'
-bspc rule -a subl3 desktop='^8'
+bspc rule -a subl desktop='^3'
+bspc rule -a Tk state=floating
 
 bspc config focused_border_color \#d26273
 bspc config normal_border_color \#c5c8c6

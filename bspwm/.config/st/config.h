@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "MesloLGS NF:pixelsize=14:antialias=true:autohint=true";
+static char *font = "Input Mono:pixelsize=14:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -82,17 +82,20 @@ char *termname = "st-256color";
  */
 unsigned int tabspaces = 8;
 
+/* bg opacity */
+float alpha = 0.90;
+
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 	/* 8 normal colors */
-	"#1d1f21",  // black - bg
-	"#cc6666",  // red
-	"#b5bd68",  // green
-	"#f0c674",  // yellow
-	"#81a2be",  // blue
-	"#b294bb",  // magenta
-	"#8abeb7",  // cyan
-	"#c5c8c6",  // gray - fg
+	"#000000",  // black - bg
+	"#d54e53",  // red
+	"#b9ca4a",  // green
+	"#e7c547",  // yellow
+	"#7aa6da",  // blue
+	"#c397d8",  // magenta
+	"#70c0b1",  // cyan
+	"#eaeaea",  // gray - fg
 
 	/* 8 bright colors */
 	"#969896",
@@ -109,6 +112,7 @@ static const char *colorname[] = {
 	/* more colors can be added after 255 to use with DefaultXX */
 	"#cccccc",
 	"#555555",
+	"black",
 };
 
 
@@ -117,7 +121,7 @@ static const char *colorname[] = {
  * foreground, background, cursor, reverse cursor
  */
 unsigned int defaultfg = 7;
-unsigned int defaultbg = 0;
+unsigned int defaultbg = 258;
 static unsigned int defaultcs = 256;
 static unsigned int defaultrcs = 257;
 

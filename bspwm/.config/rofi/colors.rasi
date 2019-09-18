@@ -1,0 +1,6 @@
+* {
+    xbs:#d26273;    /* line */
+    xfs:#eaeaea;	/* foreground */
+    xbg:#2a2a2add;  /* background color */
+    xfg:#eaeaea;
+}
