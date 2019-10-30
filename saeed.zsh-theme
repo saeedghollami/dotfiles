@@ -1,4 +1,4 @@
-# AVIT ZSH Theme
+# Saeed ZSH Theme
 PROMPT='
 $(_base_prompt)$(_user_host)${_current_dir}%{$fg[red]%}|%{$reset_color%}$(git_prompt_info)$(_post_prompt)'
 PROMPT2='%{$fg[$CARETCOLOR]%}◀%{$reset_color%} '
