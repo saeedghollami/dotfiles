@@ -1,6 +1,6 @@
-# Saeed ZSH Theme
+# AVIT ZSH Theme
 PROMPT='
-$(_base_prompt)$(_user_host)${_current_dir}%{$fg[red]%}|%{$reset_color%}$(git_prompt_info)$(_post_prompt)'
+$(_base_prompt)$(_user_host)${_current_dir}$(git_prompt_info)$(_post_prompt)'
 PROMPT2='%{$fg[$CARETCOLOR]%}◀%{$reset_color%} '
 RPROMPT='$(_vi_status)%{$(echotc UP 1)%}$(_git_time_since_commit) $(git_prompt_status) ${_return_status}%{$(echotc DO 1)%}'
 
@@ -25,7 +25,7 @@ function _post_prompt() {
     post="$nl%{$fg[$CARETCOLOR]%}⇒ %{$resetcolor%} "
     echo "$post"
   else    
-    post="%{$fg[$CARETCOLOR]%}⇒ %{$resetcolor%} "
+    post="%{$fg[red]%}|%{$reset_color%}%{$fg[$CARETCOLOR]%}⇒ %{$resetcolor%} "
     echo "$post"
   fi
   
@@ -103,7 +103,7 @@ fi
 
 MODE_INDICATOR="%{$fg_bold[yellow]%}❮%{$reset_color%}%{$fg[yellow]%}❮❮%{$reset_color%}"
 
-ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[green]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="%{$fg[red]%}|%{$reset_color%}%{$fg[green]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%} "
 
 ZSH_THEME_GIT_PROMPT_DIRTY=" %{$fg[red]%}✗%{$reset_color%}"
