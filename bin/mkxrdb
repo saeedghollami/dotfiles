@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+xrdb -load /home/saeed/.Xresources

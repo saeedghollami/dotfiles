@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+tint2 -c /home/saeed/.config/tint2/popside/popside-red.tint2rc

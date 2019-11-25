@@ -1,0 +1,3 @@
+#! /usr/bin/sh
+
+conky -c ~/.config/conky/geddy/mygeddy.conkyrc
